@@ -1,5 +1,6 @@
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class CityRentalManager implements RentalManager{
@@ -148,6 +149,74 @@ public class CityRentalManager implements RentalManager{
 
 
 
+    }
+
+    @Override
+    public void displayVehicles(){
+        if(vehicles.isEmpty()){
+            System.out.println("\n No vehicles in the fleet.");
+            return;
+        }
+        Collections.sort(vehicles);
+
+        for(Vehicle v: vehicles){
+            System.out.println(v);
+        }
+
+        System.out.println("\n ------fleet statics----");
+        System.out.println("Total vehicles: "+vehicles.size());
+
+        double totalRevenue=0;
+        for(Vehicle v:vehicles){
+            totalRevenue+=v.getDailyRate();
+        }
+        System.out.printf("Potential Daily revenue: ",totalRevenue);
+    }
+    @Override
+    public void updateDailyRate(){
+        System.out.println("\n --Update Daily Rate----");
+        System.out.println("Enter vehicle id: ");
+        String Vid=input.nextLine();
+        Vehicle foundVehicle=null;
+        for(Vehicle v:vehicles){
+            if(v.getVehicleId().equalsIgnoreCase(Vid)){
+                foundVehicle=v;
+                break;
+            }
+        }
+        if(foundVehicle != null){
+            System.out.println("\nVehicle Found.");
+            System.out.println("Brand: "+foundVehicle.getBrand());
+            System.out.println("Model: "+foundVehicle.getModel());
+            System.out.println("Current Daily Rate: "+foundVehicle.getDailyRate());
+            System.out.println("Type: "+foundVehicle.getVehicleType());
+
+            System.out.println("\n Enter new daily Rate: $");
+            double newRate=input.nextDouble();
+            input.nextLine();
+
+            foundVehicle.setDailyRate(newRate);
+            System.out.println("Update new daily rate.");
+
+        }else{
+            System.out.println("Vehicle not found ");
+            return;
+        }
+
+
+
+    }
+    @Override
+    public void runGUI(){
+
+    }
+    public void addVehicleToList(Vehicle vehicle){
+        if(vehicles.size()<maxCapacity){
+            vehicles.add(vehicle);
+        }
+    }
+    public ArrayList<Vehicle> getVehicles(){
+        return vehicles;
     }
 
 

@@ -208,7 +208,8 @@ public class CityRentalManager implements RentalManager{
     }
     @Override
     public void runGUI(){
-
+            VehicleTableGUI gui = new VehicleTableGUI(vehicles);
+            gui.setVisible(true);
     }
     public void addVehicleToList(Vehicle vehicle){
         if(vehicles.size()<maxCapacity){

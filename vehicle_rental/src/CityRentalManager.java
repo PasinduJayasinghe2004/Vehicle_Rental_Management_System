@@ -200,7 +200,7 @@ public class CityRentalManager implements RentalManager{
 
         }else{
             System.out.println("Vehicle not found ");
-            return;
+
         }
 
 

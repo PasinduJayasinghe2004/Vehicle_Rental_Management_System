@@ -34,6 +34,9 @@ public class VehicleTableGUI extends JFrame {
                }
             });
 
+            add(scrollPane,BorderLayout.CENTER);
+            add(statsButton,BorderLayout.SOUTH);
+
 
         }
         private void showFleetStatistics(){

@@ -69,7 +69,7 @@ public abstract class Vehicle implements Comparable<Vehicle>{
     }
     @Override
     public String toString(){
-        return vehicleId;
+        return "vehicle ID: "+vehicleId+"\n"+",Brand: "+brand+"\n"+",Model: "+model+"\n"+"Daily Rate:$ "+dailyRate+"\n"+",Year :"+year+"\n"+",Available: "+available;
     }
 
 }
